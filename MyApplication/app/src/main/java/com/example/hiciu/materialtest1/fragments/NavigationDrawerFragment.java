@@ -7,12 +7,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hiciu.materialtest1.Adapters.DrawerMainAdapter;
+import com.example.hiciu.materialtest1.Models.ModelDrawerMain;
 import com.example.hiciu.materialtest1.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,12 +31,13 @@ public class NavigationDrawerFragment extends Fragment {
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-
+    private RecyclerView recyclerView;
     private static final String PREF_FILE_NAME = "testpref";
     private static final String KEY_USER_LEARNED_DRAWER = "learned";
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private View mContainerView;
+    private DrawerMainAdapter drawerAdapter;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -50,9 +59,25 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.drawerList);
+        drawerAdapter = new DrawerMainAdapter(getContext(),getData());
+        recyclerView.setAdapter(drawerAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        return view;
     }
 
+    public static List<ModelDrawerMain> getData(){
+        List<ModelDrawerMain> data = new ArrayList<>();
+        int[] icons = {R.drawable.ball,R.drawable.mushroom,R.drawable.signoff,R.drawable.signoff,R.drawable.images};
+        String[] titles = {"title1","title2","title3","title4","title5"};
+        for (int i = 0; i < 100 ; i++) {
+            ModelDrawerMain model = new ModelDrawerMain(icons[i%icons.length],titles[i%titles.length]);
+            data.add(i, model );
+        }
+        Log.d("GETTING DATA : ", "getData: "+data);
+        return data;
+    }
     public void setUp(int fragment_navigation_drawer, DrawerLayout drawerLayout, final Toolbar toolbar) {
         mContainerView = getActivity().findViewById(fragment_navigation_drawer);
         mDrawerLayout = drawerLayout;
