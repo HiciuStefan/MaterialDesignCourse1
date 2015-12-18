@@ -42,7 +42,6 @@ public class DrawerMainAdapter extends RecyclerView.Adapter<DrawerMainAdapter.My
         ModelDrawerMain current = data.get(position);
         holder.title.setText(current.title);
         holder.icon.setImageResource(current.iconId);
-        Log.d(TAG, "onBindViewHolder: " + position);
     }
 
     @Override
@@ -50,7 +49,11 @@ public class DrawerMainAdapter extends RecyclerView.Adapter<DrawerMainAdapter.My
         return data.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public void deleteItem(int position){
+        data.remove(position);
+        notifyItemRemoved(position);
+    }
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         ImageView icon;
 
@@ -58,6 +61,12 @@ public class DrawerMainAdapter extends RecyclerView.Adapter<DrawerMainAdapter.My
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
+            icon.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            deleteItem(getAdapterPosition());
         }
     }
 }
