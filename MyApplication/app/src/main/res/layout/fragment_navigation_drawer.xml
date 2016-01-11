@@ -1,16 +1,13 @@
-<org.lucasr.dspec.DesignSpecFrameLayout
+<!--<org.lucasr.dspec.DesignSpecFrameLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:designSpec="@raw/defaults">
+
+    app:designSpec="@raw/defaults">-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEE"
-
     tools:context=".fragments.NavigationDrawerFragment">
 
     <LinearLayout
@@ -34,4 +31,5 @@
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
-</org.lucasr.dspec.DesignSpecFrameLayout>
+<!--
+</org.lucasr.dspec.DesignSpecFrameLayout>-->

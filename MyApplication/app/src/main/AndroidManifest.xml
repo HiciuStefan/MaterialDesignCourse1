@@ -20,8 +20,17 @@
             android:name=".activities.SubActivity"
             android:label="@string/title_activity_sub"
             android:theme="@style/AppTheme">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.MainActivity"></meta-data>
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ThirdActivity"
+            android:label="@string/title_activity_third"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.MainActivity"></meta-data>
         </activity>
     </application>
 
