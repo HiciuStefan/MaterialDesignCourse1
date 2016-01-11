@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,8 +15,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.hiciu.materialtest1.R;
+import com.example.hiciu.materialtest1.fragments.DummyFragment;
 
-public class ThirdActivity extends AppCompatActivity {
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
+
+public class ThirdActivity extends AppCompatActivity implements MaterialTabListener {
+    private MaterialTabHost tabHost;
+    private ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +38,8 @@ public class ThirdActivity extends AppCompatActivity {
         /*NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);*/
 
+        tabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +48,30 @@ public class ThirdActivity extends AppCompatActivity {
                       /*  .setAction("Action", null).show();*/
             }
         });
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(myPagerAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabHost.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        for (int i = 0; i < myPagerAdapter.getCount(); i++) {
+            tabHost.addTab(tabHost.newTab().setText(myPagerAdapter.getPageTitle(i)).setTabListener(this));
+
+        }
+
     }
 
     @Override
@@ -68,4 +106,56 @@ public class ThirdActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onTabSelected(MaterialTab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab tab) {
+
+    }
+
+    class MyPagerAdapter extends FragmentPagerAdapter {
+
+        final int icons[] = {R.drawable.ball, R.drawable.mushroom, R.drawable.signoff};
+        String[] tabText;
+
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+            tabText = getResources().getStringArray(R.array.tabs);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            DummyFragment dummyFragment = new DummyFragment();
+            Bundle args = new Bundle();
+            args.putInt("position", position);
+            dummyFragment.setArguments(args);
+            return dummyFragment;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            /*Drawable drawable = getResources().getDrawable(icons[position]);
+            drawable.setBounds(0, 0, 36, 36);
+
+            ImageSpan imageSpan = new ImageSpan(drawable);
+            SpannableString spannableString = new SpannableString(" abacasdc ");
+            spannableString.setSpan(imageSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return spannableString;*/
+
+            return getResources().getStringArray(R.array.tabs)[position];
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+    }
 }
