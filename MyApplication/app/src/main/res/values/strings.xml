@@ -16,7 +16,11 @@
         <item>Tab 1</item>
         <item>Tab 2</item>
         <item>Tab 3</item>
+        <item>Tab 4</item>
+        <item>Tab 5</item>
+        <item>Tab 6</item>
     </string-array>
     <string name="title_activity_activity_using_tab_library">ActivityUsingTabLibrary</string>
     <string name="title_activity_third">ThirdActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

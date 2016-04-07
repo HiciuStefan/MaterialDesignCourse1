@@ -11,8 +11,17 @@
     </style>
 
     <style name="MyCustomToolBarTheme" parent="AlertDialog.AppCompat.Light">
+    <item name="android:textColorPrimary">#F00</item>
+    <item name="android:textColorSecondary">#00f</item>
+</style>
+
+
+    <style name="MySecondaryToolBarTheme" parent="AlertDialog.AppCompat.Light">
+        <item name="colorPrimary">#00F</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
         <item name="android:textColorPrimary">#F00</item>
-        <item name="android:textColorSecondary">#00f</item>
+        <item name="android:textColorSecondary">#000</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

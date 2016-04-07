@@ -18,80 +18,58 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:fitsSystemWindows="true"
             tools:context="com.example.hiciu.materialtest1.activities.ThirdActivity">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.Base">
+                android:orientation="vertical"
+                app:theme="@style/MySecondaryToolBarTheme">
 
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:id="@+id/main.collapsing"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="150dp"
                     android:fitsSystemWindows="true"
                     app:contentScrim="?attr/colorPrimary"
                     app:expandedTitleMarginEnd="64dp"
                     app:expandedTitleMarginStart="48dp"
-                    app:layout_scrollFlags="scroll|snap"
-                    >
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                 <!--   <LinearLayout
+                    <ImageView
+                        android:id="@+id/main.image1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_collapseMode="parallax">
--->
-                        <ImageView
-                            android:id="@+id/main.image1"
-                            android:layout_width="match_parent"
-                            android:layout_height="140dp"
-                            android:fitsSystemWindows="true"
-                            android:src="@drawable/mushroom"
-                            app:layout_collapseMode="parallax"
-                            android:layout_gravity="center_horizontal"/>
+                        android:layout_height="100dp"
+                        android:fitsSystemWindows="true"
+                        android:src="@drawable/signoff"
+                        app:layout_collapseMode="parallax" />
 
-
-
-                        <ImageView
-                            android:id="@+id/main.image2"
-                            android:layout_width="match_parent"
-                            android:layout_height="140dp"
-                            android:fitsSystemWindows="true"
-                            android:src="@drawable/mushroom"
-                            app:layout_collapseMode="parallax"
-                            android:layout_gravity="bottom|center_horizontal"/>
-
-
-                   <!-- </LinearLayout>-->
+                    <android.support.v7.widget.Toolbar
+                        android:id="@id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        />
 
                 </android.support.design.widget.CollapsingToolbarLayout>
 
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-                <ImageView
-                    android:id="@+id/main.image3"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:fitsSystemWindows="true"
-                    android:src="@drawable/mushroom"
-                    app:layout_scrollFlags="scroll|snap"
-                    />
                 <it.neokree.materialtabs.MaterialTabHost
                     android:id="@+id/materialTabHost"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     app:accentColor="@color/accentColor"
-                    app:textColor="#FFFFFF" />
+                    app:hasIcons="true"
+                    app:iconColor="#ffffff" />
             </android.support.design.widget.AppBarLayout>
 
+            <!--    <android.support.v7.widget.Toolbar
+                    android:id="@id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_anchorGravity="right|center"
+                    app:layout_anchor="@id/anchorId"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
             <include layout="@layout/content_third" />
 

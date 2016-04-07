@@ -12,22 +12,11 @@ import com.example.hiciu.materialtest1.R;
 
 public class DummyFragment extends Fragment {
 
-    int position ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate( R.layout.fragment_dummy,container,false);
         ((TextView) layout.findViewById(R.id.theText)).setText("ACEASTA ESTE pagina" + Integer.toString(getArguments().getInt("position")));
         return layout;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
 

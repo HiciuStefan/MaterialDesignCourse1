@@ -1,12 +1,13 @@
 package com.example.hiciu.materialtest1.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -68,7 +69,8 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
         });
 
         for (int i = 0; i < myPagerAdapter.getCount(); i++) {
-            tabHost.addTab(tabHost.newTab().setText(myPagerAdapter.getPageTitle(i)).setTabListener(this));
+            /*tabHost.addTab(tabHost.newTab().setText(myPagerAdapter.getPageTitle(i)).setTabListener(this));*/
+            tabHost.addTab(tabHost.newTab().setIcon(myPagerAdapter.getIcon(i)).setTabListener(this));
 
         }
 
@@ -121,9 +123,9 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
 
     }
 
-    class MyPagerAdapter extends FragmentPagerAdapter {
+    class MyPagerAdapter extends FragmentStatePagerAdapter {
 
-        final int icons[] = {R.drawable.ball, R.drawable.mushroom, R.drawable.signoff};
+        final int icons[] = {R.drawable.right_arrow, R.drawable.signoff, R.drawable.mushroom};
         String[] tabText;
 
         public MyPagerAdapter(FragmentManager fm) {
@@ -157,5 +159,10 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
         public int getCount() {
             return 3;
         }
+
+        private Drawable getIcon(int position){
+            return getResources().getDrawable(icons[position]);
+        }
+
     }
 }
