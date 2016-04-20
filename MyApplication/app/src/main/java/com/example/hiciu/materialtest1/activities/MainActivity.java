@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     class MyPagerAdapter extends FragmentPagerAdapter {
 
-        final int icons[] = {R.drawable.ball, R.drawable.mushroom, R.drawable.signoff};
+        final int icons[] = {R.drawable.ball , R.drawable.signoff};
         String[] tabText;
 
         public MyPagerAdapter(FragmentManager fm) {
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 }

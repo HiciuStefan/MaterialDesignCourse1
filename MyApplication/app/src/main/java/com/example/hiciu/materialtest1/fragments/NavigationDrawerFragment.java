@@ -70,12 +70,12 @@ public class NavigationDrawerFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecycleItemClickListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getContext(),"onClick "+ position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "onClick " + position, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getContext(),"onLongClick "+ position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "onLongClick " + position, Toast.LENGTH_SHORT).show();
             }
         }));
         return view;
@@ -83,7 +83,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     public static List<ModelDrawerMain> getData() {
         List<ModelDrawerMain> data = new ArrayList<>();
-        int[] icons = {R.drawable.ball, R.drawable.mushroom, R.drawable.signoff, R.drawable.signoff, R.drawable.images};
+        int[] icons = {R.drawable.ball, R.drawable.signoff, R.drawable.signoff, R.drawable.images};
         String[] titles = {"title1", "title2", "title3", "title4", "title5"};
         for (int i = 0; i < 100; i++) {
             ModelDrawerMain model = new ModelDrawerMain(icons[i % icons.length], titles[i % titles.length]);

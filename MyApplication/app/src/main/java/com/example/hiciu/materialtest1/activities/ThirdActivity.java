@@ -125,7 +125,7 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
 
     class MyPagerAdapter extends FragmentStatePagerAdapter {
 
-        final int icons[] = {R.drawable.right_arrow, R.drawable.signoff, R.drawable.mushroom};
+        final int icons[] = {R.drawable.right_arrow, R.drawable.signoff};
         String[] tabText;
 
         public MyPagerAdapter(FragmentManager fm) {
@@ -157,7 +157,7 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         private Drawable getIcon(int position){
