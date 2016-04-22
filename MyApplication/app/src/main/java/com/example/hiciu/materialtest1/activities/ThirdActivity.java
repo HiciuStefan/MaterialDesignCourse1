@@ -123,6 +123,7 @@ public class ThirdActivity extends AppCompatActivity implements MaterialTabListe
 
     }
 
+
     class MyPagerAdapter extends FragmentStatePagerAdapter {
 
         final int icons[] = {R.drawable.right_arrow, R.drawable.signoff};
